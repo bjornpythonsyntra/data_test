@@ -3,12 +3,16 @@ from tabulate import tabulate
 headers = ["naam","klas","woonplaats"]
 studenten = [
 
+    ["Pieter","3a","As"],
     ["Anke","1a","As"], #0
     ["Ben","1a","Genk"], #1
     ["Cindy","2a","Genk"], # 2
     ["Dirk","2a","Hasselt"], #3
     ["Ebert","2b","Hasselt"],
-    ["Fien","2b","Zutendaal"]
+    ["Fien","2b","Zutendaal"],
+    ["Arne","1a","Hasselt"],
+    ["Dina","2a","Peer"],
+    ["Jan","2b","Lommel"]
 ]
 
 def toon_alle_leerlingen():
@@ -77,6 +81,24 @@ def verander_klas_van_leerling():
         print("ongeldig student nummer")
 
 
+#hoe pas de woonplaats aan van een leerling
 
-verander_klas_van_leerling()
-toon_alle_leerlingen()
+def verander_wooplaats_van_leerling():
+    #welke leerling
+    toon_alle_namen()
+    student_nummer = int(input("geef het nummer van de student"))
+    if student_nummer < len(studenten):
+        # nieuwe woonplaats klas toevoegen vragen welke nieuwe en koppelen aan studen
+        nieuwe_wooplaats = input("geef de nieuwe klas")
+        studenten[student_nummer][2] = nieuwe_wooplaats
+    else:
+        print("ongeldig student nummer")
+
+def sorteer_student_op_naam():
+    #mijn studenten en mijn sorteer sleutel terug geven als resultaat
+    res = sorted(studenten,key=lambda x:x[1])
+    print(tabulate(res,headers=headers))
+    #sorteer op klas en daarna per klas op naam
+
+
+sorteer_student_op_naam()
