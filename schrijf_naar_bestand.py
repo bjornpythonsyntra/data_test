@@ -1,3 +1,4 @@
+#war : write, append, read. 
 bestand = open("tekst.txt","w")
 
 
