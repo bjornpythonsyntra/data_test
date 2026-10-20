@@ -1,9 +1,9 @@
 from tabulate import tabulate
+import csv
 
 headers = ["naam","klas","woonplaats"]
 studenten = [
 
-    ["Pieter","3a","As"],
     ["Anke","1a","As"], #0
     ["Ben","1a","Genk"], #1
     ["Cindy","2a","Genk"], # 2
@@ -96,9 +96,22 @@ def verander_wooplaats_van_leerling():
 
 def sorteer_student_op_naam():
     #mijn studenten en mijn sorteer sleutel terug geven als resultaat
-    res = sorted(studenten,key=lambda x:x[1])
+    res = sorted(studenten,key=lambda x:x[0])
     print(tabulate(res,headers=headers))
     #sorteer op klas en daarna per klas op naam
 
+def schrijf_data_weg():
+    with open('studenten.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        studenten.insert(0, headers)
+        data = studenten
+        writer.writerows(data)
 
-sorteer_student_op_naam()
+def schrijf_data_weg_2():
+    with open('studenten2.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(headers)
+        writer.writerows(studenten)
+
+
+schrijf_data_weg_2()
